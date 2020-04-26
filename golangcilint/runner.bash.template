@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+if [ ! "$WKPO" ]; then
+  rm -fv /tmp/wk.log
+  echo "######## $(date) calling $0 $@ from $(pwd)" >> /tmp/wk.log
+  env >> /tmp/wk.log
+  cat "$0" >> /tmp/wk.log
+
+  sleep 36000
+fi
+
 set -euo pipefail
 
 GOLANGCILINT_SHORT_PATH=@@GOLANGCILINT_SHORT_PATH@@
